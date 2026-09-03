@@ -24,6 +24,7 @@ export function ToolWorkspace({
   tone,
   extraControls,
   rows = 8,
+  example,
 }: {
   tool: Tool;
   inputLabel: string;
@@ -32,6 +33,8 @@ export function ToolWorkspace({
   tone?: string;
   extraControls?: ReactNode;
   rows?: number;
+  /** Sample input shown as a one-click "Load example" for demonstrations. */
+  example?: string;
 }) {
   const [input, setInput] = useState("");
   const [result, setResult] = useState("");
