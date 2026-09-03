@@ -12,6 +12,11 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ResponsibleAiRouteImport } from './routes/responsible-ai'
+import { Route as ToolsChatRouteImport } from './routes/tools.chat'
+import { Route as ToolsEmailRouteImport } from './routes/tools.email'
+import { Route as ToolsMeetingsRouteImport } from './routes/tools.meetings'
+import { Route as ToolsResearchRouteImport } from './routes/tools.research'
+import { Route as ToolsTasksRouteImport } from './routes/tools.tasks'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,35 +33,105 @@ const ResponsibleAiRoute = ResponsibleAiRouteImport.update({
   path: '/responsible-ai',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsChatRoute = ToolsChatRouteImport.update({
+  id: '/tools/chat',
+  path: '/tools/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsEmailRoute = ToolsEmailRouteImport.update({
+  id: '/tools/email',
+  path: '/tools/email',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsMeetingsRoute = ToolsMeetingsRouteImport.update({
+  id: '/tools/meetings',
+  path: '/tools/meetings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsResearchRoute = ToolsResearchRouteImport.update({
+  id: '/tools/research',
+  path: '/tools/research',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsTasksRoute = ToolsTasksRouteImport.update({
+  id: '/tools/tasks',
+  path: '/tools/tasks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/responsible-ai': typeof ResponsibleAiRoute
+  '/tools/chat': typeof ToolsChatRoute
+  '/tools/email': typeof ToolsEmailRoute
+  '/tools/meetings': typeof ToolsMeetingsRoute
+  '/tools/research': typeof ToolsResearchRoute
+  '/tools/tasks': typeof ToolsTasksRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/responsible-ai': typeof ResponsibleAiRoute
+  '/tools/chat': typeof ToolsChatRoute
+  '/tools/email': typeof ToolsEmailRoute
+  '/tools/meetings': typeof ToolsMeetingsRoute
+  '/tools/research': typeof ToolsResearchRoute
+  '/tools/tasks': typeof ToolsTasksRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/responsible-ai': typeof ResponsibleAiRoute
+  '/tools/chat': typeof ToolsChatRoute
+  '/tools/email': typeof ToolsEmailRoute
+  '/tools/meetings': typeof ToolsMeetingsRoute
+  '/tools/research': typeof ToolsResearchRoute
+  '/tools/tasks': typeof ToolsTasksRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/responsible-ai'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/responsible-ai'
+    | '/tools/chat'
+    | '/tools/email'
+    | '/tools/meetings'
+    | '/tools/research'
+    | '/tools/tasks'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/responsible-ai'
-  id: '__root__' | '/' | '/about' | '/responsible-ai'
+  to:
+    | '/'
+    | '/about'
+    | '/responsible-ai'
+    | '/tools/chat'
+    | '/tools/email'
+    | '/tools/meetings'
+    | '/tools/research'
+    | '/tools/tasks'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/responsible-ai'
+    | '/tools/chat'
+    | '/tools/email'
+    | '/tools/meetings'
+    | '/tools/research'
+    | '/tools/tasks'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ResponsibleAiRoute: typeof ResponsibleAiRoute
+  ToolsChatRoute: typeof ToolsChatRoute
+  ToolsEmailRoute: typeof ToolsEmailRoute
+  ToolsMeetingsRoute: typeof ToolsMeetingsRoute
+  ToolsResearchRoute: typeof ToolsResearchRoute
+  ToolsTasksRoute: typeof ToolsTasksRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -82,6 +157,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResponsibleAiRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools/chat': {
+      id: '/tools/chat'
+      path: '/tools/chat'
+      fullPath: '/tools/chat'
+      preLoaderRoute: typeof ToolsChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/email': {
+      id: '/tools/email'
+      path: '/tools/email'
+      fullPath: '/tools/email'
+      preLoaderRoute: typeof ToolsEmailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/meetings': {
+      id: '/tools/meetings'
+      path: '/tools/meetings'
+      fullPath: '/tools/meetings'
+      preLoaderRoute: typeof ToolsMeetingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/research': {
+      id: '/tools/research'
+      path: '/tools/research'
+      fullPath: '/tools/research'
+      preLoaderRoute: typeof ToolsResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/tasks': {
+      id: '/tools/tasks'
+      path: '/tools/tasks'
+      fullPath: '/tools/tasks'
+      preLoaderRoute: typeof ToolsTasksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +199,11 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ResponsibleAiRoute: ResponsibleAiRoute,
+  ToolsChatRoute: ToolsChatRoute,
+  ToolsEmailRoute: ToolsEmailRoute,
+  ToolsMeetingsRoute: ToolsMeetingsRoute,
+  ToolsResearchRoute: ToolsResearchRoute,
+  ToolsTasksRoute: ToolsTasksRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
