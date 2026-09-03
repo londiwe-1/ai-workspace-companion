@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Info } from "lucide-react";
 import { AppShell } from "@/components/AppShell";
 import { PageHeader } from "@/components/PageHeader";
@@ -23,28 +23,6 @@ export const Route = createFileRoute("/about")({
   component: About,
 });
 
-const promptExamples = [
-  {
-    tool: "Email Generator",
-    prompt:
-      "You are a professional workplace writing assistant. Write a ready-to-send email. Tone: Friendly. Start with a Subject line, include a greeting, 2-4 short paragraphs and a sign-off.",
-  },
-  {
-    tool: "Meeting Summarizer",
-    prompt:
-      "From the raw meeting notes, produce markdown sections: Meeting Summary, Key Decisions, Action Items (Owner — task — due date). If information is missing, say 'Not specified' instead of inventing details.",
-  },
-  {
-    tool: "Task Planner",
-    prompt:
-      "Turn the raw task list into High / Medium / Low priority sections. For each task add a short reason and a time estimate, then suggest an execution order.",
-  },
-  {
-    tool: "Research Assistant",
-    prompt:
-      "Provide Overview, Key Points (5-7 bullets) and Considerations & Limitations. Be factual and flag uncertainty.",
-  },
-];
 
 function About() {
   return (
