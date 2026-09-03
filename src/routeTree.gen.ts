@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as PromptEngineeringRouteImport } from './routes/prompt-engineering'
 import { Route as ResponsibleAiRouteImport } from './routes/responsible-ai'
 import { Route as ToolsChatRouteImport } from './routes/tools.chat'
 import { Route as ToolsEmailRouteImport } from './routes/tools.email'
@@ -26,6 +27,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PromptEngineeringRoute = PromptEngineeringRouteImport.update({
+  id: '/prompt-engineering',
+  path: '/prompt-engineering',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ResponsibleAiRoute = ResponsibleAiRouteImport.update({
@@ -62,6 +68,7 @@ const ToolsTasksRoute = ToolsTasksRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/prompt-engineering': typeof PromptEngineeringRoute
   '/responsible-ai': typeof ResponsibleAiRoute
   '/tools/chat': typeof ToolsChatRoute
   '/tools/email': typeof ToolsEmailRoute
@@ -72,6 +79,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/prompt-engineering': typeof PromptEngineeringRoute
   '/responsible-ai': typeof ResponsibleAiRoute
   '/tools/chat': typeof ToolsChatRoute
   '/tools/email': typeof ToolsEmailRoute
@@ -83,6 +91,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/prompt-engineering': typeof PromptEngineeringRoute
   '/responsible-ai': typeof ResponsibleAiRoute
   '/tools/chat': typeof ToolsChatRoute
   '/tools/email': typeof ToolsEmailRoute
@@ -95,6 +104,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/prompt-engineering'
     | '/responsible-ai'
     | '/tools/chat'
     | '/tools/email'
@@ -105,6 +115,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/prompt-engineering'
     | '/responsible-ai'
     | '/tools/chat'
     | '/tools/email'
@@ -115,6 +126,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/prompt-engineering'
     | '/responsible-ai'
     | '/tools/chat'
     | '/tools/email'
@@ -126,6 +138,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  PromptEngineeringRoute: typeof PromptEngineeringRoute
   ResponsibleAiRoute: typeof ResponsibleAiRoute
   ToolsChatRoute: typeof ToolsChatRoute
   ToolsEmailRoute: typeof ToolsEmailRoute
@@ -148,6 +161,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prompt-engineering': {
+      id: '/prompt-engineering'
+      path: '/prompt-engineering'
+      fullPath: '/prompt-engineering'
+      preLoaderRoute: typeof PromptEngineeringRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/responsible-ai': {
@@ -198,6 +218,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  PromptEngineeringRoute: PromptEngineeringRoute,
   ResponsibleAiRoute: ResponsibleAiRoute,
   ToolsChatRoute: ToolsChatRoute,
   ToolsEmailRoute: ToolsEmailRoute,

@@ -92,18 +92,21 @@ function About() {
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-base">Prompt Engineering Examples</CardTitle>
+            <CardTitle className="text-base">Prompt Engineering</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            {promptExamples.map((p) => (
-              <div key={p.tool} className="rounded-lg border border-border bg-muted/50 p-4">
-                <p className="text-sm font-semibold">{p.tool}</p>
-                <p className="mt-2 text-sm text-muted-foreground">{p.prompt}</p>
-              </div>
-            ))}
-            <p className="text-xs text-muted-foreground">
-              Each prompt fixes a role, an output structure and a rule against inventing missing
-              facts — this makes results consistent and easier to verify.
+          <CardContent className="space-y-3 text-sm text-muted-foreground">
+            <p>
+              Each tool is driven by a carefully designed system prompt that fixes the model's role,
+              the output structure and anti-hallucination rules. See the full prompts and why each
+              one is effective on the dedicated Prompt Engineering page.
+            </p>
+            <p>
+              <Link
+                to="/prompt-engineering"
+                className="font-medium text-primary hover:underline"
+              >
+                View prompt engineering examples →
+              </Link>
             </p>
           </CardContent>
         </Card>
