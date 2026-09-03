@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Info } from "lucide-react";
 import { AppShell } from "@/components/AppShell";
 import { PageHeader } from "@/components/PageHeader";
@@ -23,28 +23,6 @@ export const Route = createFileRoute("/about")({
   component: About,
 });
 
-const promptExamples = [
-  {
-    tool: "Email Generator",
-    prompt:
-      "You are a professional workplace writing assistant. Write a ready-to-send email. Tone: Friendly. Start with a Subject line, include a greeting, 2-4 short paragraphs and a sign-off.",
-  },
-  {
-    tool: "Meeting Summarizer",
-    prompt:
-      "From the raw meeting notes, produce markdown sections: Meeting Summary, Key Decisions, Action Items (Owner — task — due date). If information is missing, say 'Not specified' instead of inventing details.",
-  },
-  {
-    tool: "Task Planner",
-    prompt:
-      "Turn the raw task list into High / Medium / Low priority sections. For each task add a short reason and a time estimate, then suggest an execution order.",
-  },
-  {
-    tool: "Research Assistant",
-    prompt:
-      "Provide Overview, Key Points (5-7 bullets) and Considerations & Limitations. Be factual and flag uncertainty.",
-  },
-];
 
 function About() {
   return (
@@ -92,18 +70,21 @@ function About() {
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-base">Prompt Engineering Examples</CardTitle>
+            <CardTitle className="text-base">Prompt Engineering</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            {promptExamples.map((p) => (
-              <div key={p.tool} className="rounded-lg border border-border bg-muted/50 p-4">
-                <p className="text-sm font-semibold">{p.tool}</p>
-                <p className="mt-2 text-sm text-muted-foreground">{p.prompt}</p>
-              </div>
-            ))}
-            <p className="text-xs text-muted-foreground">
-              Each prompt fixes a role, an output structure and a rule against inventing missing
-              facts — this makes results consistent and easier to verify.
+          <CardContent className="space-y-3 text-sm text-muted-foreground">
+            <p>
+              Each tool is driven by a carefully designed system prompt that fixes the model's role,
+              the output structure and anti-hallucination rules. See the full prompts and why each
+              one is effective on the dedicated Prompt Engineering page.
+            </p>
+            <p>
+              <Link
+                to="/prompt-engineering"
+                className="font-medium text-primary hover:underline"
+              >
+                View prompt engineering examples →
+              </Link>
             </p>
           </CardContent>
         </Card>

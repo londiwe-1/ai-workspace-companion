@@ -10,6 +10,7 @@ import {
   NotebookPen,
   Search,
   ShieldCheck,
+  Terminal,
 } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -22,6 +23,7 @@ const navGroups = [
     items: [
       { to: "/", label: "Home", icon: Home },
       { to: "/about", label: "About Project", icon: Info },
+      { to: "/prompt-engineering", label: "Prompt Engineering", icon: Terminal },
       { to: "/responsible-ai", label: "Responsible AI", icon: ShieldCheck },
     ],
   },
